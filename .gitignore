@@ -1,0 +1,4 @@
+kraken.key
+*.json
+.ipynb_checkpoints
+data
