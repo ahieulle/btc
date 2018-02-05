@@ -1,7 +1,7 @@
 import datetime
 
 from pandas import DataFrame
-from gdax import PublicClient
+from gdax_data import PublicClient, WebsocketClient
 
 cli = PublicClient()
 
@@ -55,9 +55,13 @@ def run_strategy(currency, granularity):
     print(df[["close", "RSI", "time_str"]].tail())
 
 
-crypto = "LTC"
-fiat = "EUR"
-currency = "{0}-{1}".format(crypto, fiat)
-granularity = 300
+if __name__ == '__main__':
+    crypto = "LTC"
+    fiat = "EUR"
+    currency = "{0}-{1}".format(crypto, fiat)
+    granularity = 300
 
-run_strategy(currency, granularity)
+    run_strategy(currency, granularity)
+
+
+
