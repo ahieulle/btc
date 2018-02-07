@@ -41,3 +41,9 @@ if __name__ == '__main__':
     df = DataFrame([t for t in ltc_collection.find() if t["type"] == "ticker"])
     fmt = "%Y-%m-%dT%H:%M:%S.%fZ"
 
+    df.index = pandas.to_datetime(df["time"])
+
+    s = df["price"][1:]
+
+    dohlc = s.resample("15T").agg(["first", "max", "min", "last"])
+    dohlc.columns = ["open", "high", "low", "close"]
